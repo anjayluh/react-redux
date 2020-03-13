@@ -1,21 +1,22 @@
-import { increment, decrement, reset } from './counterActions';
+import { increment, decrement, reset } from '../actions/counterActions.jsx';
 
 const initialState = {
-    count: 0
+    count: 5
 }
 
 export default function reducer(state = initialState, action) {
-    console.log('reducer', state.count, action);
     switch (action.type) {
-        case increment:
+        case increment().type:
+            console.log(state)
             return {
+                ...state,
                 count: state.count + 1
             };
-        case decrement:
+        case decrement().type:
             return {
                 count: state.count - 1
             };
-        case reset:
+        case reset().type:
             return {
                 count: 0
             };
